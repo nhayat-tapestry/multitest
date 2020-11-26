@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Deploy for production') {
             when {
-                branch 'master'
+                branch 'production'
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
