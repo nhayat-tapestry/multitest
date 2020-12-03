@@ -8,6 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
+                emailext body: 'buil done', subject: 'testemail', to: 'nida.hayat@systemsltd.com'
             }
         }
         stage('Test') {
