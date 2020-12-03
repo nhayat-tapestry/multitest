@@ -8,7 +8,13 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
-                emailext body: 'buil done', subject: 'testemail', to: 'nida.hayat@systemsltd.com'
+              //  emailext body: 'buil done', subject: 'testemail', to: 'nida.hayat@systemsltd.com'
+                emailext (
+  subject: "Waiting for your Approval! Job: '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+  body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+              <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+  to: 'nida.hayat@systemsltd.com'
+)
             }
         }
         stage('Test') {
