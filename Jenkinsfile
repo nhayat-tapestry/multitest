@@ -1,6 +1,8 @@
 pipeline {
     agent any        
-   
+   node {
+label 'linux'
+}
     environment {
         CI = 'true'
     }
